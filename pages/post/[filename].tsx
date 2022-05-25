@@ -3,6 +3,8 @@ import { ExperimentalGetTinaClient } from "../../.tina/__generated__/types";
 import { useTina } from "tinacms/dist/edit-state";
 import { Layout } from "../../components/layout";
 
+var useTinaCount = 0;
+
 // Use the props returned by get static props
 export default function BlogPostPage(
   props: AsyncReturnType<typeof getStaticProps>["props"]
@@ -12,6 +14,13 @@ export default function BlogPostPage(
     variables: props.variables,
     data: props.data,
   });
+
+  useTinaCount++;
+  console.log(
+    `Data from useTina invocation #${useTinaCount}`,
+    data?.post?.author
+  );
+
   if (data && data.post) {
     return (
       <Layout rawData={data} data={data.global as any}>
