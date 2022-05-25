@@ -29,11 +29,11 @@ query BlogPostQuery($relativePath: String!) {
   ...LayoutQueryFragment
   post(relativePath: $relativePath) {
     ...PostParts
-    author {
-      ... on Author {
-        name
-        avatar
-      }
-    }
+    # author {
+    #   ... on Author {
+    #     name
+    #     avatar
+    #   }
+    # }
   }
 }
